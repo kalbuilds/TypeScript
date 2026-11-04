@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/kalbuilds/TypeScript#readme",
   "devDependencies": {
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
 }
