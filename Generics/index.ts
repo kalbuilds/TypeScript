@@ -54,3 +54,11 @@ const result2 = pair<number, boolean>(100, true);
 
 console.log(result1);
 console.log(result2);
+
+// generic with interfaces 
+
+interface api<T>{
+    success: boolean,
+    message: string;
+    data: T;
+}
