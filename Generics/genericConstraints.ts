@@ -28,8 +28,8 @@ interface User{
 
 function getProperty<T, K extends keyof T>(
     object: T,
-    key:L
-): T[k]{
+    key:K
+): T[K]{
     return object[key];
 }
 
@@ -38,7 +38,8 @@ function getProperty<T, K extends keyof T>(
 // type userkeys = keyof User;
 
 //This equivalent to 
-type userkeys = "id" | "name" | "email";
+// type userkeys = "id" | "name" | "email";
+type UserKeys = keyof User;
 
 const user: User ={
     id: 1,
@@ -74,3 +75,52 @@ const students: Student[] = [
 const result = findById(students, 2);
 
 console.log(result);
+
+//exercies
+//1.Create a function named getFirstItem that accepts any array and returns its first item.
+
+function getFirstItem<T>( items: T[]): T | undefined {
+    return items[0];
+}
+
+console.log(getFirstItem([78,86,89]));
+console.log(getFirstItem(['kaleab','yoda','emahos']));
+console.log(getFirstItem(students));
+
+function  getStudent<T extends { id: number }>(
+    student: T
+): number {
+  return student.id;
+
+}
+
+console.log(getStudent(students[0]));;
+
+
+//3
+function getObject<T, K extends keyof T>(obj:T , key: K): T[K]{
+    return  obj[key]
+}
+
+// console.log(getObject(students,"name"))
+console.log(getObject(students[0], "name"));
+console.log(getObject(students[0], "department"));
+
+//generic api repsonses
+interface ApiResponse<T>{
+    success: boolean;
+    message: string;
+    data:T
+}
+
+const studentResponse: ApiResponse<Student> = {
+    success: true,
+    message: "Student loaded successfully",
+    data: {
+        id: 1,
+        name: "Kal",
+        department: "Software Engineering"
+    }
+};
+
+console.log(studentResponse);
